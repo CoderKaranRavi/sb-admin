@@ -1,7 +1,10 @@
 import React from 'react'
 import Tile from './Tile'
-function Dashboard() {
-    let data = [{
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+
+function Dashboard({data}) {
+    let dashboardData = [{
         color:'primary',
         icon:'fa-calendar',
         title:'Earnings (Monthly)',
@@ -25,7 +28,6 @@ function Dashboard() {
         icon:'fa-comments',
         title:'Pending Requests',
         value:'18'
-
 
 }]
   return <>
@@ -51,8 +53,46 @@ function Dashboard() {
         }
 
 </div>
-       </div>
+<div className='row'>
+    <Table stripped bordered over>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Batch</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {
+                data.map((e,i)=>{
+                    return <tr key={i}>
+                        <td>{i+1}</td>
+                        <td>{e.name}</td>
+                        <td>{e.username}</td>
+                        <td>{e.email}</td>
+                        <td>{e.mobile}</td>
+                        <td>{e.batch}</td>
+                        <td>
+                            <Button variant='primary'>Edit</Button>
+                            &nbsp;
+                            &nbsp;
+                            <Button variant='daner'>Delete</Button>
+                        </td>
+                    </tr>
+                })
+                    
+                }
+            
+        </tbody>
+    </Table>
+</div>
+</div>
   </>
 }
+
 
 export default Dashboard
